@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('template/header') . view('template/navbar') . view('pages/home') . view('template/footer');
+});
+Route::get('/games', function () {
+    return view('template/header') . view('template/navbar') . view('pages/games') . view('template/footer');
 });
