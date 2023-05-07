@@ -2,7 +2,69 @@
 *{
     font-family: 'Chakra Petch', sans-serif;
 }
-body{
-    background-color: #1B1220;
-    color: white;
+:root{
+    --primary: #00B3FF;
+    --secondary: #8D8D8D;
+    --success: #48FE4F;
+    --danger: #FE4848;
+    --warning: #DEFE48;
+    --info : #48E8FE;
+    --light: #f5f5f5;
+    --dark : #100B12;
+}
+
+
+a.nav-link{
+    color: var(--light);
+} 
+a.nav-link:hover{
+    color: var(--warning);
+}
+a.nav-link:active{
+    color: var(--info);
+}
+.card{
+    width: 170px;
+    height: 230px;
+    padding: 12px 12px 0 12px;
+    margin: 0;
+    /*background: linear-gradient(149.16deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+    */
+    border: var(--secondary) solid 0.5px;
+    background-color: #100B12;
+    backdrop-filter: blur(2px);
+    border-radius: 0px;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+.card img{
+    width: 146px;
+    height: 146px;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+.card h6{
+    margin: 0;
+}
+.card-body{
+    padding-left: 0;
+    padding-right: 0;
+}
+a .card:hover{
+    background-color: var(--light);
+    color: var(--dark);
+    backdrop-filter: none;
+}
+a .card:hover> img{
+    transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    -o-transform: scale(1.03);
 }
