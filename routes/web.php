@@ -14,45 +14,64 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+// --- USER --- //
+
+
+
 Route::get('/', function () {
     $data = [
-        'title' => 'HOME - TOPAP'
+        'title' => 'HOME',
     ];
-    return view('template/header', $data) . view('template/navbar') . view('pages/home') . view('template/footer');
+    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/home') . view('_partials/footer');
 });
 Route::get('/games', function () {
     $data = [
-        'title' => 'GAMES - TOPAP'
+        'title' => 'GAMES'
     ];
-    return view('template/header', $data) . view('template/navbar') . view('pages/games') . view('template/footer');
+    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/games') . view('_partials/footer');
 });
 Route::get('/pulsa', function () {
     $data = [
-        'title' => 'PULSA - TOPAP'
+        'title' => 'PULSA'
     ];
-    return view('template/header', $data) . view('template/navbar') . view('pages/pulsa') . view('template/footer');
+    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/pulsa') . view('_partials/footer');
 });
 Route::get('/voucher', function () {
     $data = [
-        'title' => 'VOUCHER - TOPAP'
+        'title' => 'VOUCHER'
     ];
-    return view('template/header', $data) . view('template/navbar') . view('pages/voucher') . view('template/footer');
+    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/voucher') . view('_partials/footer');
 });
 Route::get('/joki', function () {
     $data = [
-        'title' => 'JOKI - TOPAP'
+        'title' => 'JOKI'
     ];
-    return view('template/header', $data) . view('template/navbar') . view('pages/joki') . view('template/footer');
+    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/joki') . view('_partials/footer');
 });
 Route::get('/pricelist', function () {
     $data = [
-        'title' => 'PRICE LIST - TOPAP'
+        'title' => 'PRICE LIST'
     ];
-    return view('template/header', $data) . view('template/navbar') . view('pages/pricelist') . view('template/footer');
+    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/pricelist') . view('_partials/footer');
 });
-Route::get('/backdoor-admin', function () {
+Route::get('/about-us', function () {
     $data = [
-        'title' => 'DASHBOARD ADMIN - TOPAP'
+        'title' => 'TENTANG KAMI'
     ];
-    return view('template/header', $data) . view('admin/backdoor-admin') . view('template/footer');
+    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/about-us') . view('_partials/footer');
+});
+
+
+// --- ADMINISTRATOR --- //
+Route::get('/backdoor-admin/login', function () {
+    $data = [
+        'title' => 'LOGIN ADMIN'
+    ];
+    return view('_partials/header', $data) . view('backdoor-admin/login') . view('_partials/footer');
+});
+Route::get('/backdoor-admin/dashboard', function () {
+    $data = [
+        'title' => 'DASHBOARD ADMIN'
+    ];
+    return view('_partials/header', $data) . view('backdoor-admin/dashboard') . view('_partials/footer');
 });
