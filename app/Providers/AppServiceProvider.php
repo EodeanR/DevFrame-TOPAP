@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->share([
+            'web_name' => 'TOPAP',
+            'web_logo' => 'assets/img/logo.webp',
+        ]);
     }
 }
