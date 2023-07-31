@@ -94,4 +94,35 @@ class ProductController extends Controller
         }
         return $code;
     }
+
+    public function transaction($tsCode)
+    {
+        // $confirm = Transaction::where('ts_code', $tsCode);
+        $confirm = Transaction::first()->confirm($tsCode);
+        // dd($confirm);
+        return view('pages/transaction-process', [
+            'transaction' => $confirm,
+        ]);
+    }
+    public function confirm(Request $request, $tsCode)
+    {
+        $validate = Validator::make($request->all(), [
+            'ts_confirm' => 'required',
+        ]);
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate->errors())->withInput();
+        }
+        $inputCode = $request['ts_confirm'];
+        if ($inputCode == $tsCode) {
+            Transaction::where('ts_code', $inputCode)->update([
+                'ts_status' => 'Success',
+                'updated_at' => now(),
+            ]);
+            return Redirect::to('/transaction/' . $inputCode . '/thankyou');
+        }
+    }
+    public function thankyou()
+    {
+        return view('pages/thankyou');
+    }
 }

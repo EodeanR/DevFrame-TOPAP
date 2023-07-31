@@ -9,6 +9,7 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AdminSetSlideshowController;
 use App\Http\Controllers\PriceListController;
 use App\Http\Controllers\ProductController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::get('/about-us', AboutUsController::class);
 Route::get('/p/{prd_slug}', [ProductController::class, 'index']);
 Route::post('/p/{prd_slug}/store', [ProductController::class, 'store']);
 Route::get('/transaction/{ts_code}', [ProductController::class, 'transaction']);
+Route::put('/transaction/{ts_code}/confirm', [ProductController::class, 'confirm']);
+Route::get('/transaction/{ts_code}/thankyou', [ProductController::class, 'thankyou']);
 
 
 Route::middleware('guest')->group(function () {

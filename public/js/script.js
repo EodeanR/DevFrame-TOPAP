@@ -85,7 +85,14 @@ $(".dropdown-kategori .dropdown-item").each(function () {
     });
 });
 
-
+$('#copy-clipboard').click(function(){
+    var textCopy = $('#tsCode').text();
+    var tempTextarea = $('<textarea>');
+        $('body').append(tempTextarea);
+        tempTextarea.val(textCopy).select();
+        document.execCommand('copy');
+        tempTextarea.remove();
+})
 
 
 
