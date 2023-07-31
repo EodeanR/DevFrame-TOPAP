@@ -171,7 +171,9 @@ a .card:hover{
     background: rgba(0, 0, 0, 0.5);
     /* background: rgba(28, 19, 51, 0.5); */
 }
-
+#copy-clipboard{
+    cursor: pointer;
+}
 
 
 footer .fa-facebook:hover{
@@ -252,12 +254,49 @@ header.navbar{
     background-color: var(--transparent-hover);
 }
 
-.btn-secondary .fa-spinner{
+.fa-spinner{
     animation: rotation 2s infinite linear;
     -webkit-animation: rotation 2s infinite linear;
 }
 .table-produk img{
     max-width: 50px;
+}
+.thanks .check{
+    font-size: 8rem;
+    animation: color 2s infinite linear;
+    -webkit-animation: color 2s infinite linear;
+}
+@keyframes color{
+    0%{
+        color: var(--success);
+        filter: drop-shadow(0 0 1.5rem var(--success));
+        -webkit-filter: drop-shadow(0 0 1.5rem var(--success));
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+}
+    50%{
+        color: var(--primary);
+        filter: drop-shadow(0 0 1.5rem var(--primary));
+        -webkit-filter: drop-shadow(0 0 1.5rem var(--primary));
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+}
+    100%{
+        color: var(--success);
+        filter: drop-shadow(0 0 1.5rem var(--success));
+        -webkit-filter: drop-shadow(0 0 1.5rem var(--success));
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+}
 }
 @keyframes rotation{
     from {
