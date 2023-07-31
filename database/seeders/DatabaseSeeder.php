@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProductPrice;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+
+use function PHPUnit\Framework\callback;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +17,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(UsersSeeder::class);
+        $this->call(ProductsSeeder::class);
+        // $this->call(ProductPrice::class);
+
         // \App\Models\User::factory(10)->create();
     }
 }

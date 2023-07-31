@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
         view()->share([
             'web_name' => 'TOPAP',
             'web_logo' => 'assets/img/logo.webp',
+            'web_logo_hor' => 'assets/img/logo_hor.webp',
+            'web_url' => 'http://127.0.0.1:8000/',
         ]);
     }
 }

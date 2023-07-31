@@ -1,5 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminTransactionController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\AdminSetSlideshowController;
+use App\Http\Controllers\PriceListController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,63 +24,30 @@ use Illuminate\Support\Facades\Route;
 
 
 // --- USER --- //
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/pricelist', [PriceListController::class, 'index']);
+Route::get('/about-us', AboutUsController::class);
+Route::get('/p/{prd_slug}', [ProductController::class, 'index']);
+Route::post('/p/{prd_slug}/store', [ProductController::class, 'store']);
+Route::get('/transaction/{ts_code}', [ProductController::class, 'transaction']);
 
 
-
-Route::get('/', function () {
-    $data = [
-        'title' => 'HOME',
-    ];
-    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/home') . view('_partials/footer');
-});
-Route::get('/games', function () {
-    $data = [
-        'title' => 'GAMES'
-    ];
-    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/games') . view('_partials/footer');
-});
-Route::get('/pulsa', function () {
-    $data = [
-        'title' => 'PULSA'
-    ];
-    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/pulsa') . view('_partials/footer');
-});
-Route::get('/voucher', function () {
-    $data = [
-        'title' => 'VOUCHER'
-    ];
-    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/voucher') . view('_partials/footer');
-});
-Route::get('/joki', function () {
-    $data = [
-        'title' => 'JOKI'
-    ];
-    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/joki') . view('_partials/footer');
-});
-Route::get('/pricelist', function () {
-    $data = [
-        'title' => 'PRICE LIST'
-    ];
-    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/pricelist') . view('_partials/footer');
-});
-Route::get('/about-us', function () {
-    $data = [
-        'title' => 'TENTANG KAMI'
-    ];
-    return view('_partials/header', $data) . view('_partials/navbar') . view('pages/about-us') . view('_partials/footer');
+Route::middleware('guest')->group(function () {
+    // --- ADMINISTRATOR --- //
+    Route::get('/admin-login', [AdminLoginController::class, 'index'])->name('login');
+    Route::post('/admin-login', [AdminLoginController::class, 'store']);
 });
 
+Route::middleware('auth')->group(function () {
+    // --- ADMINISTRATOR --- //
+    Route::get('/a/dashboard', [AdminHomeController::class, 'index'])->name('adminHome');
+    Route::post('/a/logout', [AdminLoginController::class, 'destroy'])->name('logout');
 
-// --- ADMINISTRATOR --- //
-Route::get('/backdoor-admin/login', function () {
-    $data = [
-        'title' => 'LOGIN ADMIN'
-    ];
-    return view('_partials/header', $data) . view('backdoor-admin/login') . view('_partials/footer');
-});
-Route::get('/backdoor-admin/dashboard', function () {
-    $data = [
-        'title' => 'DASHBOARD ADMIN'
-    ];
-    return view('_partials/header', $data) . view('backdoor-admin/dashboard') . view('_partials/footer');
+    Route::resource('/a/s/slideshow', AdminSetSlideshowController::class);
+    Route::get('/a/transaction', [AdminTransactionController::class, 'index'])->name('transaction');
+    // Route::get('/a/game', [AdminProductController::class, 'index'])->name('game');
+
+
+    Route::resource('/a/product', AdminProductController::class);
+    // Route::get('/a/product/{product}/edit', [AdminProductController::class, 'edit'])->name('product.edit');
 });
