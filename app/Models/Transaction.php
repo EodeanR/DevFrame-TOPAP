@@ -43,6 +43,14 @@ class Transaction extends Model
             )
             ->get();
     }
+    public function tsCountStatus($status)
+    {
+        return $this
+            ->select('product_prices.prd_prc')
+            ->where('ts_status', $status)
+            ->join('product_prices', 'transactions.prd_prc_id', '=', 'product_prices.prd_prc_id')
+            ->get();
+    }
     public function confirm($tsCode)
     {
         return $this

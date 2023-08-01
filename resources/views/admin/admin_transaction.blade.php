@@ -1,7 +1,62 @@
 <x-admin-layout title="{{ $title }}">
+<div class="row mb-5">
+    <div class="col">
+        <div class="card bg-primary bg-opacity-10 border-primary">
+            <div class="row">
+                <div class="col">
+                    <h4>Total</h4>
+                    <h5 class="text-primary">Rp {{ number_format($transactions->sum('prd_prc'))}}</h5>
+                </div>
+                <div class="col col-auto d-flex align-items-center">
+                    <h2>{{$transactions->count()}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-success bg-opacity-10 border-success">
+            <div class="row">
+                <div class="col">
+                    <h4>Success</h4>
+                    <h5 class="text-success">Rp {{ number_format($tsCount->tsCountStatus('Success')->sum('prd_prc'))}}</h5>
+                </div>
+                <div class="col col-auto d-flex align-items-center">
+                    <h2>{{$tsCount->tsCountStatus('Success')->count()}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-secondary bg-opacity-10 border-secondary">
+            <div class="row">
+                <div class="col">
+                    <h4>Process</h4>
+                    <h5 class="text-secondary">Rp {{ number_format($tsCount->tsCountStatus('Process')->sum('prd_prc'))}}</h5>
+                </div>
+                <div class="col col-auto d-flex align-items-center">
+                    <h2>{{$tsCount->tsCountStatus('Process')->count()}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-danger bg-opacity-10 border-danger">
+            <div class="row">
+                <div class="col">
+                    <h4>Failed</h4>
+                    <h5 class="text-danger">Rp {{ number_format($tsCount->tsCountStatus('Failed')->sum('prd_prc'))}}</h5>
+                </div>
+                <div class="col col-auto d-flex align-items-center">
+                    <h2>{{$tsCount->tsCountStatus('Failed')->count()}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
     <div class="table-data card table-responsive">        
         <table class="table table-sm border-dark table-hover">
-
             <thead>
                 <tr>
                     <th>No</th>

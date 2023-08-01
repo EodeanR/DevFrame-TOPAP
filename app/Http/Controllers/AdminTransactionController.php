@@ -11,10 +11,13 @@ class AdminTransactionController extends Controller
     {
         // $transactions = Transaction::first()->get();
         $transactions = Transaction::first()->transaction();
+        $tsCount = Transaction::first();
+        // dd($tsCount);
         // dd($transactions);
         return view('admin/admin_transaction', [
             'title' => 'Transaction',
             'transactions' => $transactions,
+            'tsCount' => $tsCount,
         ]);
     }
 }
