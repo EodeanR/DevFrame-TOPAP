@@ -24,12 +24,10 @@
                     <th>Item tersedia</th>
                     <th>Status</th>
                     <th>Detail</th>
-                    
                 </tr>
             </thead>
             <tbody>
                 @foreach ($products as $no => $product)
-                    
                 <tr>
                     <td><small>{{ $no+1 }}</small></td>
                     <td><img src="{{ asset('storage/'.$product->prd_img) }}" alt="{{ $product->prd_name }}"></td>
